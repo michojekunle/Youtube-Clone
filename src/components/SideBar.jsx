@@ -2,10 +2,11 @@ import React from 'react';
 import { Stack } from '@mui/material';
 import { categories } from '../utils/constant';
 
+const selectedCategory = 'New';
+
 const SideBar = () => (
    <Stack 
     direction={"row"}
-    className='stack-aside'
     sx= {{
         overflowY: 'auto',
         height: { sx: 'auto', md: '95%' },
@@ -14,9 +15,17 @@ const SideBar = () => (
    >
     {
         categories.map(category => (
-            <button className='category-btn'>
-                <span>{category.icon}</span>
-                <span>{category.name}</span> 
+            <button 
+                className='category-btn'
+                style={{
+                    background: category.name === 
+                    selectedCategory && '#FC1503',
+                    color: '#fff'
+                }}
+                key={category.name}
+            >
+                <span style={{color: category.name === selectedCategory ? 'white': 'red', marginRight: 15}}>{category.icon}</span>
+                <span style={{opacity: category.name === selectedCategory ? 1 : 0.5 }}>{category.name}</span> 
             </button>
         ))
     }
