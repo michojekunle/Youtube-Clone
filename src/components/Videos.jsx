@@ -9,11 +9,11 @@ const Videos = ({ videos }) => {
     <Stack 
       direction="row"
       flexWrap="wrap"
-      justifyContent="start"
+      justifyContent="center"
       gap={2}
     >
     {
-      videos.map((item, i) => (
+      videos?.map((item, i) => (
         <Box key={i}>
           {item.id.videoId && <VideoCard video={item}/>}
           {item.id.channelId && <ChannelCard channelDetail={item}/>}
