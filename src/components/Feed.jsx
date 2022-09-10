@@ -4,19 +4,29 @@ import SideBar from './SideBar';
 import Videos from './Videos';
 import { fetchFromApi } from '../utils/fetchFromApi';
 import Loading from './Loading';
+import InternetErr from './InternetErr';
 
 const Feed = () => {
   const [selectedCategory, setSelectedCategory] = useState('New');
-  const [videos, setVideos] = useState([])
+  const [videos, setVideos] = useState([]);
+  const [disconnected, setDisconnected] = useState(false);
 
   useEffect(() => {
     setVideos([])
     fetchFromApi(`search?part=snippet&q=${selectedCategory}`)
-    .then(data => setVideos(data.items))
-  }, [selectedCategory])
+    .then(data => {setVideos(data.items)})
 
+    setTimeout(() => {
+      if(!videos) {
+        setDisconnected(true);
+      }
+    },7543000); 
+
+  }, [selectedCategory, videos])
+
+  
  
-  return (
+  return ( 
     <Stack sx={{ flexDirection: {sx : 'column', md: 'row'} }}>
         <Box sx={{height: { sx : 'auto', md: '92vh' }, 
                   borderRight: '1px solid #3d3d3d', 
@@ -31,7 +41,7 @@ const Feed = () => {
                 mt: 1.5, color: '#fff'
               }}
           >
-            Copyright 2022 AMD 
+            Copyright 2022 <a href="https://github.com/michojekunle">AMD</a> 
           </Typography>
         </Box>
         <Box p={2} sx={{overflowY: 'auto', height: '90vh', flex: 2}}>
@@ -39,13 +49,13 @@ const Feed = () => {
                 variant="h4"
                 fontWeight= "bold"
                 mb={2}
-                sx={{color: 'white'}}
+                sx={{color: 'white', textAlign: { xs: 'center' }}}
               >
                 {selectedCategory} <span style={{ color: '#F31503'}}>videos</span>
               </Typography>
               
-              {
-                videos.length ? <Videos videos={videos} />: <Loading /> 
+              { !disconnected ? (
+                videos.length ? <Videos videos={videos} />: <Loading /> ) : <InternetErr />
               }
         </Box>
     </Stack>

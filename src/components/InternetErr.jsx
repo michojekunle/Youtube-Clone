@@ -5,7 +5,7 @@ import disconnected from '../utils/disconnected.png'
 const InternetErr = () => {
 
   return (
-    <div className='unknown-page'>
+    <div className='internet-err'>
       <div>
         <div className="error-img">
             <img src={disconnected} alt="Error 404 page not Found" />
