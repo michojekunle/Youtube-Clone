@@ -16,15 +16,14 @@ const Feed = () => {
     fetchFromApi(`search?part=snippet&q=${selectedCategory}`)
     .then(data => {setVideos(data.items)})
 
-    setTimeout(() => {
-      if(!videos) {
-        setDisconnected(true);
-      }
-    },7543000); 
+  }, [selectedCategory])
 
-  }, [selectedCategory, videos])
-
-  
+  setTimeout(() => {
+    if(!videos) {
+      setDisconnected(true);
+      console.log(disconnected)
+    }
+  },5000);
  
   return ( 
     <Stack sx={{ flexDirection: {sx : 'column', md: 'row'} }}>
@@ -41,7 +40,7 @@ const Feed = () => {
                 mt: 1.5, color: '#fff'
               }}
           >
-            Copyright 2022 <a href="https://github.com/michojekunle">AMD</a> 
+            Copyright 2022 <a href="https://github.com/michojekunle" target="_blank">AMD</a> 
           </Typography>
         </Box>
         <Box p={2} sx={{overflowY: 'auto', height: '90vh', flex: 2}}>
