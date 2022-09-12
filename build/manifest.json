@@ -1,0 +1,39 @@
+{
+  "theme_color" : "#000",
+  "background_color" : "#000",
+  "display" : "standalone",
+  "scope" : "/",
+  "start_url" : "/",
+  "short_name" : "Youtube 2.0",
+  "name" : "YouTube 2.0",
+  "description" : "youtube clone",
+
+  "icons": [
+    {
+      "src": "maskable.png",
+      "type": "image/png",
+      "sizes": "120x120",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "logo384.png",
+      "type": "image/png",
+      "sizes": "384x384"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
